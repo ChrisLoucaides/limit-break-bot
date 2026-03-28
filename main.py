@@ -1,16 +1,41 @@
-# This is a sample Python script.
+import discord
+from discord.ext import commands
+from config import DISCORD_TOKEN, CHANNEL_ID
+from matcher import match_intent
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+@bot.event
+async def on_message(message):
+    if message.author.bot:
+        return
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if message.channel.id != CHANNEL_ID:
+        return
+
+    content = message.content.strip()
+
+    if len(content) < 6:
+        return
+
+    answer, score = match_intent(content)
+
+    if answer:
+        await message.channel.send(answer)
+    else:
+        # Optional fallback
+        pass
+
+    await bot.process_commands(message)
+
+
+bot.run(DISCORD_TOKEN)
