@@ -1,26 +1,21 @@
 import os
 import logging
 from threading import Thread
-
+from flask import Flask
 import discord
 from discord.ext import commands
-from flask import Flask
-
-from config import DISCORD_TOKEN, CHANNEL_ID
 from matcher import match_intent
 
-print("Bot is starting...")
+# ----- Environment variables -----
+DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
 
-# ----- Configure logging -----
+# ----- Logging -----
 logging.basicConfig(level=logging.INFO)
-
 logger = logging.getLogger("discord")
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
-logger.addHandler(handler)
 
-# ----- Discord Bot -----
+# ----- Discord bot -----
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
@@ -31,31 +26,28 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.bot:
-        return
-    if message.channel.id != CHANNEL_ID:
-        return
+    if message.author.bot: return
+    if message.channel.id != CHANNEL_ID: return
     content = message.content.strip()
-    if len(content) < 6:
-        return
+    if len(content) < 6: return
     answer, score = match_intent(content)
     if answer:
         await message.channel.send(answer)
     await bot.process_commands(message)
 
-# ----- Flask Webserver -----
+# ----- Flask webserver for UptimeRobot -----
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def home():
     return "Bot is running"
 
-def run_flask():
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
+def run_bot():
+    bot.run(DISCORD_TOKEN)
 
-# Start Flask in a separate thread
-Thread(target=run_flask).start()
+# Start Discord bot in a separate thread
+Thread(target=run_bot).start()
 
-# Start Discord bot (blocking)
-bot.run(DISCORD_TOKEN)
+# Run Flask in main thread (Render health checks)
+port = int(os.environ.get("PORT", 8080))
+app.run(host="0.0.0.0", port=port)
