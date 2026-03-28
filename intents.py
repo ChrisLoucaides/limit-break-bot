@@ -7,7 +7,8 @@ INTENTS = {
             "what day is the tournament",
             "when are prelims",
             "when is top 8",
-            "what time does bracket start"
+            "what time does bracket start",
+            "what time"
         ],
         "answer": (
             "Preliminary rounds take place Friday 2nd October 2026 at 7PM "
@@ -101,10 +102,12 @@ INTENTS = {
             "are sets best of 3",
             "set format",
             "is it bo3 or bo5",
-            "how many games per set"
+            "how many games per set",
+            "bo3",
+            "bo5"
         ],
         "answer": (
-            "Sets are best of 3 until Top 3, where they become best of 5."
+            "Sets are best of 3 until Top 8, where they become best of 5."
         )
     },
 
@@ -119,6 +122,20 @@ INTENTS = {
         "answer": (
             "Please refer to the stages-and-ruleset channel for full rules on stages, "
             "bans, and character selection. Keep in mind that no characters are banned."
+        )
+    },
+
+    "vods": {
+        "patterns": [
+            "vod",
+            "vods",
+            "watch sets",
+            "watch matches",
+            "watch my set",
+        ],
+        "answer": (
+            "You will be able to view the VOD on twitch immediately after the stream ends. "
+            "We will upload individual sets on YouTube a few days after the tournament."
         )
     },
 
@@ -137,10 +154,11 @@ INTENTS = {
         "patterns": [
             "can i use headphones",
             "audio jack",
-            "can i plug in headphones"
+            "can i plug in headphones",
+            "audio"
         ],
         "answer": (
-            "Yes, but you must allow your opponent to hear audio too (e.g. splitter). "
+            "You may use headphones to listen to game audio, but you must allow your opponent to also hear audio too (e.g. splitter). "
             "On stream setups, plug into the monitor, not the Switch."
         )
     },
@@ -150,7 +168,9 @@ INTENTS = {
             "are characters banned",
             "any bans",
             "is any character banned",
-            "steve"
+            "steve",
+            "ness",
+            "banned"
         ],
         "answer": "No characters are banned."
     },
@@ -164,7 +184,7 @@ INTENTS = {
             "late registration"
         ],
         "answer": (
-            "You must sign up via the CCC website, once brackets are finalized, spots cannot be replaced or changed."
+            "You must sign up via the CCC website, once brackets are finalized, spots cannot be replaced or changed. Bracket has a limit of 48 players."
         )
     },
 
@@ -188,7 +208,35 @@ INTENTS = {
             "warm up setups"
         ],
         "answer": (
-            "Most likely yes, but this will be confirmed closer to the event."
+            "We will confirm friendlies schedule soon. We will allow warm-up friendlies for Top 8 players."
+        )
+    },
+
+    "crews": {
+        "patterns": [
+            "3v3",
+            "3v3s",
+            "3 v 3",
+            "are you guys doing a 3v3 again",
+            "will there be 3v3s",
+        ],
+        "answer": (
+            "Currently there are no plans to have a 3v3/team event."
+        )
+    },
+
+    "platform": {
+        "patterns": [
+            "console",
+            "switch 1",
+            "3 v 3",
+            "switch 2",
+            "switch",
+            "will we be playing on switch 1 or 2",
+            "is the tournament on switch 1 or switch 2"
+        ],
+        "answer": (
+            "We will be using Switch 1 consoles for the tournament."
         )
     },
 
