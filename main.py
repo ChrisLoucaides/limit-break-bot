@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+
+import webserver
 from config import DISCORD_TOKEN, CHANNEL_ID
 from matcher import match_intent
 
@@ -37,5 +39,5 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-
+webserver.keep_alive()
 bot.run(DISCORD_TOKEN)
