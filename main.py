@@ -1,4 +1,5 @@
 import os
+import logging
 from threading import Thread
 
 import discord
@@ -10,13 +11,23 @@ from matcher import match_intent
 
 print("Bot is starting...")
 
+# ----- Configure logging -----
+logging.basicConfig(level=logging.INFO)
+
+logger = logging.getLogger("discord")
+logger.setLevel(logging.INFO)
+handler = logging.StreamHandler()
+handler.setLevel(logging.INFO)
+logger.addHandler(handler)
+
+# ----- Discord Bot -----
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user}")
+    logger.info(f"Logged in as {bot.user}")
 
 @bot.event
 async def on_message(message):
@@ -40,7 +51,6 @@ def home():
     return "Bot is running"
 
 def run_flask():
-    # Use the PORT Render provides
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
 
