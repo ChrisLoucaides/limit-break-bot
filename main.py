@@ -4,11 +4,13 @@ from threading import Thread
 from flask import Flask
 import discord
 from discord.ext import commands
+
+import config
 from matcher import match_intent
 
 # ----- Environment variables -----
-DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID"))
+DISCORD_TOKEN = config.DISCORD_TOKEN
+CHANNEL_ID = config.CHANNEL_ID
 
 # ----- Logging -----
 logging.basicConfig(level=logging.INFO)
@@ -28,6 +30,12 @@ async def on_ready():
 async def on_message(message):
     if message.author.bot: return
     if message.channel.id != CHANNEL_ID: return
+
+    logger.info(
+        f"Message from {message.author} in channel {message.channel} "
+        f"(ID: {message.channel.id}): {message.content}"
+    )
+
     content = message.content.strip()
     if len(content) < 6: return
     answer, score = match_intent(content)
