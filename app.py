@@ -3,8 +3,7 @@ from threading import Thread
 from flask import Flask
 import discord
 import time
-from discord.ext import commands \
- \
+from discord.ext import commands
 import config
 from matcher import match_intent
 
