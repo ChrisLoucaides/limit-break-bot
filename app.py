@@ -2,8 +2,9 @@ import logging
 from threading import Thread
 from flask import Flask
 import discord
-from discord.ext import commands
-
+import time
+from discord.ext import commands \
+ \
 import config
 from matcher import match_intent
 
@@ -58,6 +59,7 @@ async def on_message(message):
 # ----- Flask webserver for UptimeRobot -----
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return "Bot is running"
@@ -78,11 +80,15 @@ def start_bot():
 @app.before_request
 def activate_bot():
     global bot_started
-
     if not bot_started:
-        logger.info("First request received, starting bot thread...")
-        Thread(target=start_bot).start()
+        logger.info("Starting bot thread...")
+        Thread(target=start_bot, daemon=True).start()
         bot_started = True
+
+
+# 🔒 Keep process alive (CRITICAL)
+while True:
+    time.sleep(60)
 
 # def run_bot():
 #     logger.debug("Starting Discord bot thread...")
