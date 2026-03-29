@@ -69,10 +69,15 @@ bot_started = False
 
 def start_bot():
     logger.info("Starting Discord bot...")
+    logger.info(f"TOKEN EXISTS: {bool(DISCORD_TOKEN)}")
     try:
         bot.run(DISCORD_TOKEN)
     except Exception as e:
         logger.error(f"BOT ERROR: {e}")
+
+
+# Start bot thread immediately
+Thread(target=start_bot, daemon=True).start()
 
 
 @app.before_request
@@ -86,6 +91,7 @@ def activate_bot():
 
 if __name__ == "__main__":
     import os
+
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
 
