@@ -67,15 +67,3 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 asyncio.run(main())
-# def run_bot():
-#     logger.debug("Starting Discord bot thread...")
-#     logger.debug(f"TOKEN EXISTS:  {bool(DISCORD_TOKEN)}")
-#     bot.run(DISCORD_TOKEN)
-#
-#
-# # Start Discord bot in a separate thread
-# Thread(target=run_bot).start()
-#
-# # Run Flask in main thread (Render health checks)
-# port = int(os.environ.get("PORT", 8080))
-# app.run(host="0.0.0.0", port=port)
