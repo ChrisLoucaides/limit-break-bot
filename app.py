@@ -2,7 +2,6 @@ import logging
 from threading import Thread
 from flask import Flask
 import discord
-import time
 from discord.ext import commands
 import config
 from matcher import match_intent
@@ -85,9 +84,10 @@ def activate_bot():
         bot_started = True
 
 
-# 🔒 Keep process alive (CRITICAL)
-while True:
-    time.sleep(60)
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
 
 # def run_bot():
 #     logger.debug("Starting Discord bot thread...")
