@@ -22,9 +22,11 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
+
 @bot.event
 async def on_ready():
     logger.info(f"Logged in as {bot.user}")
+
 
 @bot.event
 async def on_message(message):
@@ -43,15 +45,21 @@ async def on_message(message):
         await message.channel.send(answer)
     await bot.process_commands(message)
 
+
 # ----- Flask webserver for UptimeRobot -----
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
     return "Bot is running"
 
+
 def run_bot():
+    logger.debug("Starting Discord bot thread...")
+    logger.debug(f"TOKEN EXISTS:  {bool(DISCORD_TOKEN)}")
     bot.run(DISCORD_TOKEN)
+
 
 # Start Discord bot in a separate thread
 Thread(target=run_bot).start()
