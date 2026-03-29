@@ -188,6 +188,15 @@ INTENTS = {
         )
     },
 
+    "demi": {
+        "patterns": [
+            "demi",
+        ],
+        "answer": (
+            "Demi likes walking into F-Smashes and SDing"
+        )
+    },
+
     "stream": {
         "patterns": [
             "stream"
