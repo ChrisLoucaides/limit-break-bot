@@ -1,6 +1,6 @@
 SYNONYMS = {
-    "when": ["when", "date", "day", "time", "schedule"],
-    "where": ["where", "location", "venue", "place"],
+    "when": ["when", "date", "day", "time", "schedule", "pote"],
+    "where": ["where", "location", "venue", "place", "pou"],
     "tournament": ["tournament", "event", "competition", "bracket"],
     "smash": ["smash", "ssbu", "ultimate", "smash bros", "ult"],
     "ticket": ["ticket", "entry", "price", "cost"],

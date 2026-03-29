@@ -8,7 +8,8 @@ INTENTS = {
             "when are prelims",
             "when is top 8",
             "what time does bracket start",
-            "what time"
+            "what time",
+            "pote"
         ],
         "answer": (
             "Preliminary rounds take place Friday 2nd October 2026 at 7PM "
@@ -35,7 +36,9 @@ INTENTS = {
             "where is the tournament held",
             "what is the venue",
             "where is comic con",
-            "where is smash being held"
+            "where is smash being held",
+            "pou en to event",
+            "pou en to tournament"
         ],
         "answer": (
             "The tournament is held at Cyprus Expo (Kratiki Ekthesi), Hall 5 "
