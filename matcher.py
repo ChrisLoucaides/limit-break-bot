@@ -1,10 +1,11 @@
+from typing import Optional, Tuple
 from rapidfuzz import fuzz
 from intents import INTENTS
 from config import CONFIDENCE_THRESHOLD
 from normalizer import normalize
 
 
-def match_intent(user_input: str) -> tuple[str | None, int]:
+def match_intent(user_input: str) -> Tuple[Optional[str], int]:
     """
     Match user input against known intents and return:
     (best_answer, confidence_score)
@@ -72,7 +73,7 @@ def _calculate_similarity(input_text: str, pattern_text: str) -> int:
     return fuzz.partial_ratio(input_text, pattern_text)
 
 
-def _build_response(best_match: dict, threshold: int) -> tuple[str | None, int]:
+def _build_response(best_match: dict, threshold: int) -> Tuple[Optional[str], int]:
     """
     Return final response based on confidence threshold.
     """
