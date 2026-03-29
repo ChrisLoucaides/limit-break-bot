@@ -5,8 +5,9 @@ import discord
 from discord.ext import commands
 import config
 from matcher import match_intent
+import os
 
-# ----- Environment variables -----
+# ----- Env -----
 DISCORD_TOKEN = config.DISCORD_TOKEN
 CHANNEL_ID = config.CHANNEL_ID
 
@@ -20,80 +21,45 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
-
 @bot.event
 async def on_ready():
     logger.info(f"Logged in as {bot.user}")
-
 
 @bot.event
 async def on_message(message):
     if message.author.bot:
         return
-
     if message.channel.id != CHANNEL_ID:
         return
 
-    logger.info(
-        f"Message from {message.author} in channel {message.channel} "
-        f"(ID: {message.channel.id}): {message.content}"
-    )
-
     content = message.content.strip()
-
     if len(content) < 6:
         return
 
     answer, score = match_intent(content)
-
     logger.info(f"Match result: {answer}, score: {score}")
 
     if answer:
         await message.channel.send(answer)
-
     await bot.process_commands(message)
 
-
-# ----- Flask webserver for UptimeRobot -----
+# ----- Flask for uptime -----
 app = Flask(__name__)
-
 
 @app.route("/")
 def home():
     return "Bot is running"
 
-
-# 🔥 Run-once flag
-bot_started = False
-
-
-def start_bot():
-    logger.info("Starting Discord bot...")
-    logger.info(f"TOKEN EXISTS: {bool(DISCORD_TOKEN)}")
-    try:
-        bot.run(DISCORD_TOKEN)
-    except Exception as e:
-        logger.error(f"BOT ERROR: {e}")
-
-
-# Start bot thread immediately
-Thread(target=start_bot, daemon=True).start()
-
-
-@app.before_request
-def activate_bot():
-    global bot_started
-    if not bot_started:
-        logger.info("Starting bot thread...")
-        Thread(target=start_bot, daemon=True).start()
-        bot_started = True
-
-
-if __name__ == "__main__":
-    import os
-
+# Run Flask in a background thread
+def run_flask():
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
+
+Thread(target=run_flask, daemon=True).start()
+
+# ----- MAIN THREAD: Run bot -----
+logger.info("Starting Discord bot in main thread...")
+bot.run(DISCORD_TOKEN)
 
 # def run_bot():
 #     logger.debug("Starting Discord bot thread...")
