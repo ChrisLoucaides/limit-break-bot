@@ -1,4 +1,3 @@
-import os
 import logging
 from threading import Thread
 from flask import Flask
@@ -30,8 +29,11 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.bot: return
-    if message.channel.id != CHANNEL_ID: return
+    if message.author.bot:
+        return
+
+    if message.channel.id != CHANNEL_ID:
+        return
 
     logger.info(
         f"Message from {message.author} in channel {message.channel} "
@@ -39,36 +41,48 @@ async def on_message(message):
     )
 
     content = message.content.strip()
-    if len(content) < 6: return
+
+    if len(content) < 6:
+        return
+
     answer, score = match_intent(content)
+
+    logger.info(f"Match result: {answer}, score: {score}")
+
     if answer:
         await message.channel.send(answer)
+
     await bot.process_commands(message)
 
 
 # ----- Flask webserver for UptimeRobot -----
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
     return "Bot is running"
 
 
-def run_flask():
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
+# 🔥 Run-once flag
+bot_started = False
 
 
-# Start Flask in background thread
-Thread(target=run_flask).start()
+def start_bot():
+    logger.info("Starting Discord bot...")
+    try:
+        bot.run(DISCORD_TOKEN)
+    except Exception as e:
+        logger.error(f"BOT ERROR: {e}")
 
-# IMPORTANT: bot runs in MAIN thread
-logger.info("Starting Discord bot...")
-try:
-    bot.run(DISCORD_TOKEN)
-except Exception as e:
-    print("BOT ERROR:", e)
+
+@app.before_request
+def activate_bot():
+    global bot_started
+
+    if not bot_started:
+        logger.info("First request received, starting bot thread...")
+        Thread(target=start_bot).start()
+        bot_started = True
 
 # def run_bot():
 #     logger.debug("Starting Discord bot thread...")
