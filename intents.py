@@ -11,7 +11,6 @@ INTENTS = {
             "what time",
             "pote",
             "pote en to tournament",
-            "pote enna gini",
             "ti ora en",
             "ti ora arxizei"
         ],
@@ -46,7 +45,6 @@ INTENTS = {
             "pou en to event",
             "pou en to tournament",
             "pou ginete",
-            "pou enna gini"
             "topothesia"
         ],
         "answer": (
@@ -65,7 +63,7 @@ INTENTS = {
             "do i need ticket for saturday",
             "xreiazetai eisitirio",
             "poso kanei",
-            "einai dorean",
+            "einai dwrean",
             "pliromi"
         ],
         "answer": (
@@ -122,16 +120,12 @@ INTENTS = {
     "sets": {
         "patterns": [
             "are sets best of 3",
-            "best of three",
-            "best of five",
-            "best of 5",
             "set format",
             "is it bo3 or bo5",
             "how many games per set",
             "bo3",
             "bo5",
-            "poso einai ta sets",
-            "os ta posa"
+            "poso einai ta sets"
         ],
         "answer": (
             "Sets are best of 3 until Top 8, where they become best of 5."
@@ -145,8 +139,7 @@ INTENTS = {
             "ruleset",
             "stage bans",
             "character picks",
-            "kanones",
-            "rules smash"
+            "kanones"
         ],
         "answer": (
             "Please refer to the stages-and-ruleset channel for full rules on stages, "
@@ -154,33 +147,82 @@ INTENTS = {
         )
     },
 
-    "sora": {
+    "vods": {
         "patterns": [
-            "sora",
-            "sora mains",
-            "glue",
-            "crayons",
-            "what do sora mains eat",
+            "vod",
+            "vods",
+            "watch sets",
+            "watch matches",
+            "watch my set",
+            "mporo na do vod",
+            "pou na do matches"
         ],
         "answer": (
-            "🖍️🧴"
+            "You will be able to view the VOD on twitch immediately after the stream ends. "
+            "We will upload individual sets on YouTube a few days after the tournament."
         )
+    },
+
+    "sudden_death": {
+        "patterns": [
+            "what happens in sudden death",
+            "sudden death rules",
+            "who wins sudden death",
+            "sudden death ti ginetai"
+        ],
+        "answer": (
+            "The player in the lead (more stocks or lower percent) is declared the winner."
+        )
+    },
+
+    "headphones": {
+        "patterns": [
+            "can i use headphones",
+            "audio jack",
+            "can i plug in headphones",
+            "audio",
+            "mporo na valo akoustika"
+        ],
+        "answer": (
+            "You may use headphones to listen to game audio, but you must allow your opponent to also hear audio too (e.g. splitter). "
+            "On stream setups, plug into the monitor, not the Switch."
+        )
+    },
+
+    "characters": {
+        "patterns": [
+            "are characters banned",
+            "any bans",
+            "is any character banned",
+            "steve",
+            "ness",
+            "banned",
+            "iparxoun banned characters"
+        ],
+        "answer": "No characters are banned."
     },
 
     "signup": {
         "patterns": [
             "signup",
-            "sign up",
-            "register",
             "can i join late",
             "can i take someone's spot",
+            "can i replace someone",
             "late registration",
             "eggrafi",
             "pos kano signup"
         ],
         "answer": (
-            "You must sign up via the CCC website https://cypruscomiccon.org/product-category/gaming/"
-            " once brackets are finalized, spots cannot be replaced or changed. Bracket has a limit of 48 players. https://start.gg/limit-break"
+            "You must sign up via the CCC website, once brackets are finalized, spots cannot be replaced or changed. Bracket has a limit of 48 players."
+        )
+    },
+
+    "demi": {
+        "patterns": [
+            "demi",
+        ],
+        "answer": (
+            "Demi likes walking into F-Smashes and SDing"
         )
     },
 
@@ -191,12 +233,126 @@ INTENTS = {
             "will this be live on twitch",
             "is there a twitch stream",
             "where can i watch the stream",
-            "live stream",
-            "twitch",
             "tha exei stream"
         ],
         "answer": (
             "There will be a stream for Top 8 at https://twitch.tv/limitbreakcy"
         )
+    },
+
+    "warmup": {
+        "patterns": [
+            "can we warm up",
+            "is there friendlies",
+            "warm up setups",
+            "tha exei warmup"
+        ],
+        "answer": (
+            "We will confirm friendlies schedule soon. We will allow warm-up friendlies for Top 8 players."
+        )
+    },
+
+    "crews": {
+        "patterns": [
+            "3v3",
+            "3v3s",
+            "3 v 3",
+            "are you guys doing a 3v3 again",
+            "will there be 3v3s",
+            "tha exei 3v3"
+        ],
+        "answer": (
+            "Currently there are no plans to have a 3v3/team event."
+        )
+    },
+
+    "platform": {
+        "patterns": [
+            "console",
+            "switch 1",
+            "3 v 3",
+            "switch 2",
+            "switch",
+            "will we be playing on switch 1 or 2",
+            "is the tournament on switch 1 or switch 2",
+            "se poio switch paizoume"
+        ],
+        "answer": (
+            "We will be using Switch 1 consoles for the tournament."
+        )
+    },
+
+    "startgg": {
+        "patterns": [
+            "do i need start gg",
+            "start.gg required",
+            "how to register start gg",
+            "xreiazetai startgg"
+        ],
+        "answer": (
+            "You need a start.gg account to participate, please create one if you don't have one. Once registering on the CCC website, we will invite you on start.gg "
+        )
+    },
+
+    "seeding": {
+        "patterns": [
+            "how is seeding decided",
+            "how does seeding work",
+            "why is my seed",
+            "seeding algorithm",
+            "what are these brackets",
+            "pos ginetai to seeding"
+        ],
+        "answer": (
+            "Seeding is based on past tournament data. If none exists, it is random. "
+            "The Smashbase algorithm is also used to help determine seeding."
+        )
+    },
+
+    "bracket_changes": {
+        "patterns": [
+            "can i change my bracket",
+            "i dont like my path",
+            "change opponent",
+            "change seeding",
+            "mporo na allakso bracket"
+        ],
+        "answer": (
+            "Bracket changes may be considered only for valid reasons (e.g. repeat matchups). "
+            "Disliking your seed alone is not a valid reason."
+        )
+    },
+
+    "email": {
+        "patterns": [
+            "i havent received an email yet",
+            "when is the email for start.gg being sent",
+            "startgg email",
+            "email",
+            "am i listed in the event",
+            "im not on startgg yet",
+            "why have i not been invited to startgg yet",
+            "i registered for limit break but im not in bracket",
+            "i registered but im not on startgg yet",
+            "i registered but i cant see myself on startgg",
+            "i registered but i cant see my name on startgg",
+            "i registered but i cant see my name in bracket",
+            "den pira email"
+        ],
+        "answer": (
+            "We get forwarded sign-up info once a day. If you have signed up and not received a start.gg invite "
+            "after 2 days please ping an admin. All sign-up requests will get processed as soon as possible."
+        )
+    },
+
+    "game": {
+        "patterns": [
+            "what game is played",
+            "which smash game",
+            "is it ultimate or melee",
+            "what game is the tournament",
+            "poio game paizoume"
+        ],
+        "answer": "The tournament is for Super Smash Bros Ultimate."
     }
 }
