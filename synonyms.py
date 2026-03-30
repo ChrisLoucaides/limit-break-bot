@@ -1,12 +1,12 @@
 SYNONYMS = {
-    "when": ["when", "date", "day", "time", "schedule", "pote"],
-    "where": ["where", "location", "venue", "place", "pou"],
-    "tournament": ["tournament", "event", "competition", "bracket"],
+    "when": ["when", "date", "day", "time", "schedule", "pote", "ti ora"],
+    "where": ["where", "location", "venue", "place", "pou", "topothesia", "topos", "xoro"],
+    "tournament": ["tournament", "event", "competition", "bracket", "tour"],
     "smash": ["smash", "ssbu", "ultimate", "smash bros", "ult"],
-    "ticket": ["ticket", "entry", "price", "cost"],
-    "watch": ["watch", "spectate", "view"],
-    "rules": ["rules", "ruleset", "stages"],
-    "signup": ["signup", "register", "join", "sign up", "sign-up"],
+    "ticket": ["ticket", "entry", "price", "cost", "eisitirio"],
+    "watch": ["watch", "spectate", "view", "parakoloutho", "blepo", "dw", "vlepo"],
+    "rules": ["rules", "ruleset", "stages", "kanones"],
+    "signup": ["signup", "register", "join", "sign up", "eggrafi"],
     "seeding": ["seeding", "seed", "ranking"],
-    "controller": ["controller", "pad", "gc controller", "procon"]
+    "controller": ["controller", "pad", "gc controller", "procon", "χειριστήριο"]
 }
