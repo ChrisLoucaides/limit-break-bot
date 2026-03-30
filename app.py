@@ -43,9 +43,10 @@ async def on_message(message):
 
     answer, score = match_intent(content)
 
-    if score < config.CONFIDENCE_THRESHOLD:
+    if score < 60.0:
         answer = "I'm not 100% sure on how to answer that question, please wait until the real Afro or another TO responds"
 
+    logger.info(f"Message:  {message.content} from {message.author}")
     logger.info(f"Match result: {answer}, score: {score}")
 
     if answer:
