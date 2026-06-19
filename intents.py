@@ -2,6 +2,8 @@ INTENTS = {
     "date": {
         "patterns": [
             "when is the tournament",
+            "when is",
+            "when are",
             "what date is smash",
             "when does the event start",
             "what day is the tournament",
@@ -25,6 +27,7 @@ INTENTS = {
             "what are preliminaries",
             "what are prelims",
             "how does prelims work",
+            "how do prelims work",
             "what is the format before top 8",
             "ti en ta prelims",
             "pos doulevoun ta prelims"
