@@ -67,7 +67,7 @@ INTENTS = {
             "pliromi"
         ],
         "answer": (
-            "You need a €10 tournament ticket to enter. Friday prelims are during the "
+            "You need a €15 tournament ticket to enter. Friday prelims are during the "
             "free outdoor opening ceremony. If you make Top 8 or attend Saturday, "
             "you must also purchase a Cyprus Comic Con Saturday ticket. https://cypruscomiccon.org/product/cyprus-comic-con-2026-single-day-ticket/"
         )
@@ -128,7 +128,7 @@ INTENTS = {
             "poso einai ta sets"
         ],
         "answer": (
-            "Sets are best of 3 until Top 8, where they become best of 5."
+            "Sets are best of 3 until Top 8 Qualifiers onwards, where they become best of 5."
         )
     },
 
@@ -184,7 +184,7 @@ INTENTS = {
             "mporo na valo akoustika"
         ],
         "answer": (
-            "You may use headphones to listen to game audio, but you must allow your opponent to also hear audio too (e.g. splitter). "
+            "You may use headphones to listen to game audio, but you must allow your opponent to also hear audio too if they request it (e.g. splitter). "
             "On stream setups, plug into the monitor, not the Switch."
         )
     },
@@ -236,7 +236,7 @@ INTENTS = {
             "tha exei stream"
         ],
         "answer": (
-            "There will be a stream for Top 8 at https://twitch.tv/limitbreakcy"
+            "There will be a stream at https://twitch.tv/limitbreakcy"
         )
     },
 
@@ -248,7 +248,7 @@ INTENTS = {
             "tha exei warmup"
         ],
         "answer": (
-            "We will confirm friendlies schedule soon. We will allow warm-up friendlies for Top 8 players."
+            "We will confirm friendlies schedule closer to the time. We will allow warm-up friendlies for Prelims/Top 8 players."
         )
     },
 
