@@ -84,6 +84,7 @@ INTENTS = {
             "do i need adapter",
             "xreiazetai controller",
             "na fero controller"
+            "controller"
         ],
         "answer": (
             "This is a Bring Your Own Controller/Adapter event. Some spares may exist, "
@@ -226,6 +227,15 @@ INTENTS = {
         ],
         "answer": (
             "Demi likes walking into F-Smashes and SDing"
+        )
+    },
+
+    "jaw": {
+        "patterns": [
+            "jaw",
+        ],
+        "answer": (
+            "Jaw's favourite hobby is beefing with strangers on FB Marketplace, and owning alphabet posters and IKEA plants"
         )
     },
 
